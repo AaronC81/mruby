@@ -25,6 +25,11 @@ void mrb_init_math(mrb_state*);
 void mrb_init_version(mrb_state*);
 void mrb_init_mrblib(mrb_state*);
 
+void __attribute__((weak)) mrb_mruby_gosu_gem_init(mrb_state* _) {
+  // Looks like a comment because mruby is used to generate some C elsewhere in the build process
+  printf("// WARNING: Running with weak gosu_init, something went wrong during linking if you're expecting to use Gosu here.\n");
+}
+
 #define DONE mrb_gc_arena_restore(mrb, 0);
 void
 mrb_init_core(mrb_state *mrb)
@@ -45,6 +50,11 @@ mrb_init_core(mrb_state *mrb)
   mrb_init_hash(mrb); DONE;
   mrb_init_numeric(mrb); DONE;
   mrb_init_range(mrb); DONE;
+
+  // This will be provided when we link mruby-gosu
+  // (Or, if the linker doesn't provide it, left with its weak definition)
+  mrb_mruby_gosu_gem_init(mrb); DONE
+
   mrb_init_gc(mrb); DONE;
   mrb_init_version(mrb); DONE;
   mrb_init_mrblib(mrb); DONE;
