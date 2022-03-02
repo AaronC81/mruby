@@ -1,17 +1,18 @@
 class Window < Gosu::Window
   def initialize
+    super(500, 500)
     @x = 10
     @y = 10
-    super(500, 500)
+
+    @image = Gosu::Image.new("assets/shark.png")
+    @sample = Gosu::Sample.new("assets/sound.wav")
   end
 
   def draw
-    Gosu.draw_rect(@x, @y, 100, 100, Gosu::Color::RED)
+    @image.draw(@x, @y, 1)
   end
 
   def update
-    puts "Update!"
-
     if Gosu.button_down?(Gosu::KB_S)
       @y += 2
     elsif Gosu.button_down?(Gosu::KB_W)
@@ -29,6 +30,7 @@ class Window < Gosu::Window
   # Is there some MRuby error hook we need to set up?
   def button_down(btn)
     puts "Pressed a key! (#{btn})"
+    @sample.play
   end
 end
 
