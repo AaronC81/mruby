@@ -8,6 +8,8 @@ emcc main.c \
     -sUSE_SDL=2 \
     -sLEGACY_GL_EMULATION=1 \
     -sASYNCIFY_STACK_SIZE=65536 \
-    -O3 \
+    -sTOTAL_MEMORY=1024MB \
+    -O0 \
+    -g \
     -o index.html \
     --preload-file assets

@@ -4,7 +4,7 @@ MRuby::CrossBuild.new('emscripten') do |conf|
   conf.gembox "default"
 
   conf.cc.command = 'emcc'
-  conf.cc.flags = ['-Os', '-Dbool=int', '-DMRB_INT64'] #, '-m64', '-sMEMORY64=1']
+  conf.cc.flags = ['-O0', '-g', '-Dbool=int', '-DMRB_INT64'] #, '-m64', '-sMEMORY64=1']
   conf.linker.command = 'emcc'
   conf.archiver.command = 'emar'
 
