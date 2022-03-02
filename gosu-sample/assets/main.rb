@@ -1,3 +1,5 @@
+puts File.read("assets/main.rb")
+
 class Window < Gosu::Window
   def initialize
     super(500, 500)
