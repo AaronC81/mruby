@@ -10,8 +10,25 @@ class Window < Gosu::Window
   end
 
   def update
-    puts "Update..."
-    @x += 2
+    puts "Update!"
+
+    if Gosu.button_down?(Gosu::KB_S)
+      @y += 2
+    elsif Gosu.button_down?(Gosu::KB_W)
+      @y -= 2
+    end
+
+    if Gosu.button_down?(Gosu::KB_D)
+      @x += 2
+    elsif Gosu.button_down?(Gosu::KB_A)
+      @x -= 2
+    end
+  end
+
+  # If you miss an argument, the interpreter hangs - not ideal!
+  # Is there some MRuby error hook we need to set up?
+  def button_down(btn)
+    puts "Pressed a key! (#{btn})"
   end
 end
 
