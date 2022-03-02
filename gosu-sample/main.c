@@ -10,5 +10,4 @@ int main(void) {
   mrb_load_file(mrb, source_file);
 
   fclose(source_file);
-  mrb_close(mrb);
 }
