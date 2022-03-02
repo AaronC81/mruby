@@ -39,7 +39,7 @@ cd into `gosu` and run the following to build the forked Gosu library:
 When successful, it should drop a load of `.o` files into `emscripten-output`. Congratulations,
 you've compiled Gosu for the web!
 
-## Step 3. Build MRuby
+### Step 3. Build MRuby
 
 cd back out of `gosu` and into `mruby`.
 
@@ -62,7 +62,7 @@ MRUBY_CONFIG=wasm_config.rb rake
 
 If all goes well, you should get a `build/emscripten/lib/libmruby.a` binary.
 
-## Step 4. Build Your Game
+### Step 4. Build Your Game
 
 To get an actual web page, we need to do one more build where we link everything together and 
 provide a `main` implementation which starts the Ruby interpreter.
